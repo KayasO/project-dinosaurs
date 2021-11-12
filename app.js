@@ -159,12 +159,21 @@ btn.addEventListener(
 
 // Create Dino Compare Method 1
 // NOTE: Weight in JSON file is in lbs, height in inches.
+const isHumanSmallerThan = (dinosaur) => {
+  return human.height < dinosaur.height
+}
 
 // Create Dino Compare Method 2
 // NOTE: Weight in JSON file is in lbs, height in inches.
+const doesHumanWeighLessThan = (dinosaur) => {
+  return human.weight < dinosaur.weight
+}
 
 // Create Dino Compare Method 3
 // NOTE: Weight in JSON file is in lbs, height in inches.
+const hasSameDiet = (dinosaur) => {
+  return human.diet === dinosaur.diet
+}
 
 // Generate Tiles for each Dino in Array
 
