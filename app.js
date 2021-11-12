@@ -151,6 +151,8 @@ btn.addEventListener(
         height: feetInput.value * inchesInput.value,
         diet: dietInput.value,
       }
+
+      removeForm()
     }
   })()
 )
@@ -169,5 +171,9 @@ btn.addEventListener(
 // Add tiles to DOM
 
 // Remove form from screen
+const removeForm = () => {
+  const formEl = document.getElementsByClassName('form-container')[0]
+  formEl.remove()
+}
 
 // On button click, prepare and display infographic
