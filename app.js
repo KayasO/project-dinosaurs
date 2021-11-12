@@ -7,7 +7,11 @@ const data = {
       diet: 'herbavor',
       where: 'North America',
       when: 'Late Cretaceous',
-      fact: 'First discovered in 1889 by Othniel Charles Marsh',
+      fact: [
+        'First discovered in 1889 by Othniel Charles Marsh',
+        "Triceratops is Greek for 'three-horned face', but this dinosaur actually had only two genuine horns",
+        'Skull was one-third of its body',
+      ],
     },
     {
       species: 'Tyrannosaurus Rex',
@@ -16,7 +20,11 @@ const data = {
       diet: 'carnivor',
       where: 'North America',
       when: 'Late Cretaceous',
-      fact: 'The largest known skull measures in at 5 feet long.',
+      fact: [
+        'The largest known skull measures in at 5 feet long.',
+        "The word 'Tyrannosaurus' literally means 'Tyrant Lizard' in Greek",
+        'The landmass that today forms the Western Northern America was the home for T. Rex back in time',
+      ],
     },
     {
       species: 'Anklyosaurus',
@@ -25,7 +33,10 @@ const data = {
       diet: 'herbavor',
       where: 'North America',
       when: 'Late Cretaceous',
-      fact: 'Anklyosaurus survived for approximately 135 million years.',
+      fact: [
+        'Anklyosaurus survived for approximately 135 million years.',
+        'The armor plates of the Ankylosaurus would have acted as a shield',
+      ],
     },
     {
       species: 'Brachiosaurus',
@@ -34,7 +45,11 @@ const data = {
       diet: 'herbavor',
       where: 'North America',
       when: 'Late Jurasic',
-      fact: 'An asteroid was named 9954 Brachiosaurus in 1991.',
+      fact: [
+        'An asteroid was named 9954 Brachiosaurus in 1991.',
+        'Longer front limbs than hind limbs',
+        'Adults could live to be 100 years old',
+      ],
     },
     {
       species: 'Stegosaurus',
@@ -43,7 +58,10 @@ const data = {
       diet: 'herbavor',
       where: 'North America, Europe, Asia',
       when: 'Late Jurasic to Early Cretaceous',
-      fact: 'The Stegosaurus had between 17 and 22 seperate places and flat spines.',
+      fact: [
+        'The Stegosaurus had between 17 and 22 seperate places and flat spines.',
+        'Stegosaurus had a brain the size of a walnut',
+      ],
     },
     {
       species: 'Elasmosaurus',
@@ -52,7 +70,11 @@ const data = {
       diet: 'carnivor',
       where: 'North America',
       when: 'Late Cretaceous',
-      fact: 'Elasmosaurus was a marine reptile first discovered in Kansas.',
+      fact: [
+        'Elasmosaurus was a marine reptile first discovered in Kansas.',
+        'The first fossil of elasmosaurus was discovered in kansas',
+        'Elasmosaurus was incapable of raising its neck above the water',
+      ],
     },
     {
       species: 'Pteranodon',
@@ -61,7 +83,11 @@ const data = {
       diet: 'carnivor',
       where: 'North America',
       when: 'Late Cretaceous',
-      fact: 'Actually a flying reptile, the Pteranodon is not a dinosaur.',
+      fact: [
+        'Actually a flying reptile, the Pteranodon is not a dinosaur.',
+        "The name Pteranodon means: 'Toothless Wing'",
+        'The Pteranodon lived between 88 and 84.5 million years ago.',
+      ],
     },
     {
       species: 'Pigeon',
@@ -70,7 +96,7 @@ const data = {
       diet: 'herbavor',
       where: 'World Wide',
       when: 'Holocene',
-      fact: 'All birds are living dinosaurs.',
+      fact: ['All birds are living dinosaurs.'],
     },
   ],
 }
@@ -99,17 +125,12 @@ const dinos = data['Dinos'].map(
     )
 )
 
-console.log(dinos)
-
 // Create Human Object
 let human = {
-  species: 'James',
-  weight: 74,
-  height: 220,
-  diet: 'carnivor',
-  where: 'Germany',
-  when: '21st Century',
-  fact: 'Apparently a software engineer',
+  species: '',
+  weight: 0,
+  height: 0,
+  diet: '',
 }
 
 // Use IIFE to get human data from form
@@ -130,8 +151,6 @@ btn.addEventListener(
         height: feetInput.value * inchesInput.value,
         diet: dietInput.value,
       }
-
-      console.log('Human: ', human)
     }
   })()
 )
