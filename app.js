@@ -178,6 +178,22 @@ const hasSameDiet = (dinosaur) => {
 // Generate Tiles for each Dino in Array
 
 // Add tiles to DOM
+;(function () {
+  const container = document.getElementById('dino-compare')
+  const grid = document.createElement('div')
+  grid.setAttribute('id', 'grid')
+  container.appendChild(grid)
+
+  for (const dino of dinos) {
+    const newChild = document.createElement('div')
+    newChild.setAttribute('class', 'grid-item')
+
+    const img = document.createElement('img')
+    img.setAttribute('src', `./images/${dino.species}.png`)
+    newChild.appendChild(img)
+    grid.appendChild(newChild)
+  }
+})()
 
 // Remove form from screen
 const removeForm = () => {
