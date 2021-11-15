@@ -125,6 +125,13 @@ const dinos = data['Dinos'].map(
     )
 )
 
+const shuffleDinosaurs = () => {
+  // every sort will move an element either one element to the front, back or stay in place
+  for (let i = 0; i < Math.random() * 100; i++) {
+    dinos.sort(() => Math.random() - 0.5)
+  }
+}
+
 // Create Human Object
 let human = {
   name: '',
@@ -207,13 +214,6 @@ const generateHumanElement = () => {
   newChild.appendChild(dataEl)
 
   return newChild
-}
-
-const shuffleDinosaurs = () => {
-  // every sort will move an element either one element to the front, back or stay in place
-  for (let i = 0; i < Math.random() * 100; i++) {
-    dinos.sort(() => Math.random() - 0.5)
-  }
 }
 
 // Add tiles to DOM
