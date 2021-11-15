@@ -7,7 +7,7 @@ const data = {
       diet: 'herbavor',
       where: 'North America',
       when: 'Late Cretaceous',
-      fact: [
+      facts: [
         'First discovered in 1889 by Othniel Charles Marsh',
         "Triceratops is Greek for 'three-horned face', but this dinosaur actually had only two genuine horns",
         'Skull was one-third of its body',
@@ -20,7 +20,7 @@ const data = {
       diet: 'carnivor',
       where: 'North America',
       when: 'Late Cretaceous',
-      fact: [
+      facts: [
         'The largest known skull measures in at 5 feet long.',
         "The word 'Tyrannosaurus' literally means 'Tyrant Lizard' in Greek",
         'The landmass that today forms the Western Northern America was the home for T. Rex back in time',
@@ -33,7 +33,7 @@ const data = {
       diet: 'herbavor',
       where: 'North America',
       when: 'Late Cretaceous',
-      fact: [
+      facts: [
         'Anklyosaurus survived for approximately 135 million years.',
         'The armor plates of the Ankylosaurus would have acted as a shield',
       ],
@@ -45,7 +45,7 @@ const data = {
       diet: 'herbavor',
       where: 'North America',
       when: 'Late Jurasic',
-      fact: [
+      facts: [
         'An asteroid was named 9954 Brachiosaurus in 1991.',
         'Longer front limbs than hind limbs',
         'Adults could live to be 100 years old',
@@ -58,7 +58,7 @@ const data = {
       diet: 'herbavor',
       where: 'North America, Europe, Asia',
       when: 'Late Jurasic to Early Cretaceous',
-      fact: [
+      facts: [
         'The Stegosaurus had between 17 and 22 seperate places and flat spines.',
         'Stegosaurus had a brain the size of a walnut',
       ],
@@ -70,7 +70,7 @@ const data = {
       diet: 'carnivor',
       where: 'North America',
       when: 'Late Cretaceous',
-      fact: [
+      facts: [
         'Elasmosaurus was a marine reptile first discovered in Kansas.',
         'The first fossil of elasmosaurus was discovered in kansas',
         'Elasmosaurus was incapable of raising its neck above the water',
@@ -83,7 +83,7 @@ const data = {
       diet: 'carnivor',
       where: 'North America',
       when: 'Late Cretaceous',
-      fact: [
+      facts: [
         'Actually a flying reptile, the Pteranodon is not a dinosaur.',
         "The name Pteranodon means: 'Toothless Wing'",
         'The Pteranodon lived between 88 and 84.5 million years ago.',
@@ -96,20 +96,20 @@ const data = {
       diet: 'herbavor',
       where: 'World Wide',
       when: 'Holocene',
-      fact: ['All birds are living dinosaurs.'],
+      facts: ['All birds are living dinosaurs.'],
     },
   ],
 }
 
 // Create Dino Constructor
-function Dinosaur(species, weight, height, diet, where, when, fact) {
+function Dinosaur(species, weight, height, diet, where, when, facts) {
   this.species = species
   this.weight = weight
   this.height = height
   this.diet = diet
   this.where = where
   this.when = when
-  this.fact = fact
+  this.facts = facts
 }
 // Create Dino Objects
 const dinos = data['Dinos'].map(
@@ -121,7 +121,7 @@ const dinos = data['Dinos'].map(
       dino.diet,
       dino.where,
       dino.when,
-      dino.fact
+      dino.facts
     )
 )
 
@@ -180,7 +180,7 @@ const generateDinoElement = (dino) => {
   newChild.appendChild(img)
 
   const factEl = document.createElement('p')
-  factEl.innerHTML = dino.fact
+  factEl.innerHTML = dino.facts[Math.floor(Math.random() * dino.facts.length)]
   newChild.appendChild(factEl)
 
   return newChild
