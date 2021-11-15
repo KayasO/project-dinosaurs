@@ -186,6 +186,14 @@ const generateDinoElement = (dino) => {
   return newChild
 }
 
+const shuffleDinosaurs = () => {
+  // runs max 100 times
+  // every sort will move an element either one element to the front, back or stay in place
+  for (let i = 0; i < Math.random() * 100; i++) {
+    dinos.sort(() => Math.random() - 0.5)
+  }
+}
+
 // Add tiles to DOM
 const addInfographicToDOM = () => {
   const container = document.getElementById('dino-compare')
@@ -208,5 +216,6 @@ const button = document.getElementById('btn')
 btn.addEventListener('click', () => {
   getHumanData()
   removeForm()
+  shuffleDinosaurs()
   addInfographicToDOM()
 })
