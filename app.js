@@ -160,14 +160,14 @@ const getHumanData = (() => {
 
 // Create Dino Compare Method 1
 // NOTE: Weight in JSON file is in lbs, height in inches.
-const isHumanSmallerThan = (dinosaur) => {
-  return human.height < dinosaur.height
+const calcHeightDifference = (dinosaur) => {
+  return dinosaur.height - human.height
 }
 
 // Create Dino Compare Method 2
 // NOTE: Weight in JSON file is in lbs, height in inches.
-const doesHumanWeighLessThan = (dinosaur) => {
-  return human.weight < dinosaur.weight
+const calcWeightDifference = (dinosaur) => {
+  return dinosaur.weight - human.weight
 }
 
 // Create Dino Compare Method 3
