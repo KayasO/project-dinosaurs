@@ -176,6 +176,20 @@ const hasSameDiet = (dinosaur) => {
   return human.diet === dinosaur.diet
 }
 
+const addListener = () => {
+  const gridItems = document.getElementsByClassName('fact')
+
+  for (const item of gridItems) {
+    item.addEventListener('mouseover', (event) => {
+      console.log('over')
+    })
+
+    item.addEventListener('mouseleave', (event) => {
+      console.log('leave')
+    })
+  }
+}
+
 // Generate Tiles for each Dino in Array
 const generateDinoElement = (dino) => {
   const newChild = document.createElement('div')
@@ -191,6 +205,7 @@ const generateDinoElement = (dino) => {
   newChild.appendChild(img)
 
   const fact = document.createElement('p')
+  fact.setAttribute('class', 'fact')
   fact.innerHTML = dino.facts[Math.floor(Math.random() * dino.facts.length)]
   newChild.appendChild(fact)
 
@@ -229,6 +244,8 @@ const addInfographicToDOM = () => {
   }
 
   grid.insertBefore(generateHumanElement(), grid.children[4])
+
+  addListener()
 }
 
 // Remove form from screen
