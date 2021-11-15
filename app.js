@@ -170,6 +170,21 @@ const hasSameDiet = (dinosaur) => {
 }
 
 // Generate Tiles for each Dino in Array
+const generateDinoElement = (dino) => {
+  const newChild = document.createElement('div')
+  newChild.setAttribute('class', 'grid-item')
+
+  const img = document.createElement('img')
+  img.setAttribute('src', `./images/${dino.species}.png`)
+  img.setAttribute('alt', `./images/${dino.species}.png`)
+  newChild.appendChild(img)
+
+  const factEl = document.createElement('p')
+  factEl.innerHTML = dino.fact
+  newChild.appendChild(factEl)
+
+  return newChild
+}
 
 // Add tiles to DOM
 const addInfographicToDOM = () => {
@@ -179,13 +194,8 @@ const addInfographicToDOM = () => {
   container.appendChild(grid)
 
   for (const dino of dinos) {
-    const newChild = document.createElement('div')
-    newChild.setAttribute('class', 'grid-item')
-
-    const img = document.createElement('img')
-    img.setAttribute('src', `./images/${dino.species}.png`)
-    newChild.appendChild(img)
-    grid.appendChild(newChild)
+    const dinoEl = generateDinoElement(dino)
+    grid.appendChild(dinoEl)
   }
 }
 
