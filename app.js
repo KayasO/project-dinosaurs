@@ -127,7 +127,7 @@ const dinos = data['Dinos'].map(
 
 // Create Human Object
 let human = {
-  species: '',
+  name: '',
   weight: 0,
   height: 0,
   diet: '',
@@ -143,7 +143,7 @@ const getHumanData = (() => {
 
   return () => {
     human = {
-      species: nameInput.value,
+      name: nameInput.value,
       weight: weightInput.value,
       height: feetInput.value * inchesInput.value,
       diet: dietInput.value,
@@ -194,9 +194,9 @@ const generateHumanElement = () => {
   const newChild = document.createElement('div')
   newChild.setAttribute('class', 'grid-item')
 
-  const species = document.createElement('h3')
-  species.innerHTML = human.species
-  newChild.appendChild(species)
+  const name = document.createElement('h3')
+  name.innerHTML = human.name
+  newChild.appendChild(name)
 
   const img = document.createElement('img')
   img.setAttribute('src', `./images/human.png`)
