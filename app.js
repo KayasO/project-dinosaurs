@@ -228,7 +228,7 @@ const addInfographicToDOM = () => {
     grid.appendChild(dinoEl)
   }
 
-  grid.appendChild(generateHumanElement())
+  grid.insertBefore(generateHumanElement(), grid.children[4])
 }
 
 // Remove form from screen
