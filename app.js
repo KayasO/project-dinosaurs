@@ -174,14 +174,37 @@ const generateDinoElement = (dino) => {
   const newChild = document.createElement('div')
   newChild.setAttribute('class', 'grid-item')
 
+  const species = document.createElement('h3')
+  species.innerHTML = dino.species
+  newChild.appendChild(species)
+
   const img = document.createElement('img')
   img.setAttribute('src', `./images/${dino.species}.png`)
   img.setAttribute('alt', `./images/${dino.species}.png`)
   newChild.appendChild(img)
 
-  const factEl = document.createElement('p')
-  factEl.innerHTML = dino.facts[Math.floor(Math.random() * dino.facts.length)]
-  newChild.appendChild(factEl)
+  const fact = document.createElement('p')
+  fact.innerHTML = dino.facts[Math.floor(Math.random() * dino.facts.length)]
+  newChild.appendChild(fact)
+
+  return newChild
+}
+
+const generateHumanElement = () => {
+  const newChild = document.createElement('div')
+  newChild.setAttribute('class', 'grid-item')
+
+  const species = document.createElement('h3')
+  species.innerHTML = human.species
+  newChild.appendChild(species)
+
+  const img = document.createElement('img')
+  img.setAttribute('src', `./images/human.png`)
+  newChild.appendChild(img)
+
+  const dataEl = document.createElement('p')
+  dataEl.innerHTML = `Diet: ${human.species} Weight: ${human.weight} Height: ${human.height}`
+  newChild.appendChild(dataEl)
 
   return newChild
 }
@@ -204,6 +227,8 @@ const addInfographicToDOM = () => {
     const dinoEl = generateDinoElement(dino)
     grid.appendChild(dinoEl)
   }
+
+  grid.appendChild(generateHumanElement())
 }
 
 // Remove form from screen
