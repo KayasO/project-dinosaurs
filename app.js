@@ -134,28 +134,22 @@ let human = {
 }
 
 // Use IIFE to get human data from form
-const button = document.getElementById('btn')
-btn.addEventListener(
-  'click',
-  (() => {
-    const nameInput = document.getElementById('name')
-    const feetInput = document.getElementById('feet')
-    const inchesInput = document.getElementById('inches')
-    const weightInput = document.getElementById('weight')
-    const dietInput = document.getElementById('diet')
+const getHumanData = (() => {
+  const nameInput = document.getElementById('name')
+  const feetInput = document.getElementById('feet')
+  const inchesInput = document.getElementById('inches')
+  const weightInput = document.getElementById('weight')
+  const dietInput = document.getElementById('diet')
 
-    return () => {
-      human = {
-        species: nameInput.value,
-        weight: weightInput.value,
-        height: feetInput.value * inchesInput.value,
-        diet: dietInput.value,
-      }
-
-      removeForm()
+  return () => {
+    human = {
+      species: nameInput.value,
+      weight: weightInput.value,
+      height: feetInput.value * inchesInput.value,
+      diet: dietInput.value,
     }
-  })()
-)
+  }
+})()
 
 // Create Dino Compare Method 1
 // NOTE: Weight in JSON file is in lbs, height in inches.
@@ -178,7 +172,7 @@ const hasSameDiet = (dinosaur) => {
 // Generate Tiles for each Dino in Array
 
 // Add tiles to DOM
-;(function () {
+const addInfographicToDOM = () => {
   const container = document.getElementById('dino-compare')
   const grid = document.createElement('div')
   grid.setAttribute('id', 'grid')
@@ -193,12 +187,16 @@ const hasSameDiet = (dinosaur) => {
     newChild.appendChild(img)
     grid.appendChild(newChild)
   }
-})()
-
-// Remove form from screen
-const removeForm = () => {
-  const formEl = document.getElementsByClassName('form-container')[0]
-  formEl.remove()
 }
 
+// Remove form from screen
+const removeForm = () =>
+  document.getElementsByClassName('form-container')[0].remove()
+
 // On button click, prepare and display infographic
+const button = document.getElementById('btn')
+btn.addEventListener('click', () => {
+  getHumanData()
+  removeForm()
+  addInfographicToDOM()
+})
