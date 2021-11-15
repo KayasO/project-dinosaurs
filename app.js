@@ -142,18 +142,18 @@ let human = {
 
 // Use IIFE to get human data from form
 const getHumanData = (() => {
-  const nameInput = document.getElementById('name')
-  const feetInput = document.getElementById('feet')
-  const inchesInput = document.getElementById('inches')
-  const weightInput = document.getElementById('weight')
-  const dietInput = document.getElementById('diet')
+  const name = document.getElementById('name').value
+  const feet = parseFloat(document.getElementById('feet').value)
+  const inches = parseFloat(document.getElementById('inches').value)
+  const weight = document.getElementById('weight').value
+  const diet = document.getElementById('diet').value
 
   return () => {
     human = {
-      name: nameInput.value,
-      weight: weightInput.value,
-      height: feetInput.value * inchesInput.value,
-      diet: dietInput.value,
+      name,
+      weight,
+      diet,
+      height: feet * 12 + inches,
     }
   }
 })()
@@ -210,7 +210,7 @@ const generateHumanElement = () => {
   newChild.appendChild(img)
 
   const dataEl = document.createElement('p')
-  dataEl.innerHTML = `Diet: ${human.species} Weight: ${human.weight} Height: ${human.height}`
+  dataEl.innerHTML = `Diet: ${human.diet} Weight: ${human.weight} Height: ${human.height}`
   newChild.appendChild(dataEl)
 
   return newChild
