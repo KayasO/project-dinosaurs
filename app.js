@@ -142,18 +142,18 @@ let human = {
 
 // Use IIFE to get human data from form
 const getHumanData = (() => {
-  const name = document.getElementById('name').value
-  const feet = parseFloat(document.getElementById('feet').value)
-  const inches = parseFloat(document.getElementById('inches').value)
-  const weight = document.getElementById('weight').value
-  const diet = document.getElementById('diet').value
+  const nameEl = document.getElementById('name')
+  const feetEl = document.getElementById('feet')
+  const inchesEl = document.getElementById('inches')
+  const weightEl = document.getElementById('weight')
+  const dietEl = document.getElementById('diet')
 
   return () => {
     human = {
-      name,
-      weight,
-      diet,
-      height: feet * 12 + inches,
+      name: nameEl.value,
+      height: parseFloat(feetEl.value) * 12 + parseFloat(inchesEl.value),
+      weight: weightEl.value,
+      diet: dietEl.value,
     }
   }
 })()
