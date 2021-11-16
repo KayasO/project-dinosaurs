@@ -244,7 +244,6 @@ const generateDinoElement = (dino) => {
   const compare = document.createElement('p')
   compare.setAttribute('class', 'compare')
   compare.style.display = 'none'
-  compare.style.height = '75%'
   compare.innerHTML = buildComparison(dino)
 
   const info = document.createElement('div')
@@ -267,13 +266,6 @@ const generateHumanElement = () => {
   const img = document.createElement('img')
   img.setAttribute('src', `./images/human.png`)
   newChild.appendChild(img)
-
-  const dataEl = document.createElement('p')
-  dataEl.innerHTML = `
-    Diet: ${human.diet}<br/>
-    Height(in.): ${human.height}<br/>
-    Weight(lbs): ${human.weight}`
-  newChild.appendChild(dataEl)
 
   return newChild
 }
