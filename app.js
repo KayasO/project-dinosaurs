@@ -160,8 +160,15 @@ const getHumanData = (() => {
 
 // Create Dino Compare Method 1
 // NOTE: Weight in JSON file is in lbs, height in inches.
-const calcHeightDifference = (dinoHeight) => {
-  return dinoHeight - human.height
+const printHeightDiff = (dinoHeight) => {
+  const diff = dinoHeight - human.height
+  if (diff > 0) {
+    return `${diff} inches taller than you`
+  } else if (diff < 0) {
+    return `${-diff} inches smaller than you`
+  } else {
+    return 'the same height as you'
+  }
 }
 
 // Create Dino Compare Method 2
@@ -174,6 +181,15 @@ const calcWeightDifference = (dinoWeight) => {
 // NOTE: Weight in JSON file is in lbs, height in inches.
 const hasSameDiet = (dinoDiet) => {
   return human.diet === dinoDiet
+}
+
+const buildComparison = (dino) => {
+  return `
+    Comparison:
+    ${dino.species} was ${printHeightDiff(dino.height)}<br/>    
+    <br/>
+    ${hasSameDiet(dino.diet)}
+  `
 }
 
 const addListener = () => {
@@ -217,7 +233,8 @@ const generateDinoElement = (dino) => {
   const compare = document.createElement('p')
   compare.setAttribute('class', 'compare')
   compare.style.display = 'none'
-  compare.innerHTML = calcHeightDifference(dino.height)
+  compare.style.height = '75%'
+  compare.innerHTML = buildComparison(dino)
 
   const info = document.createElement('div')
   info.setAttribute('class', 'info-container')
