@@ -153,7 +153,7 @@ const getHumanData = (() => {
       name: nameEl.value,
       height: parseFloat(feetEl.value) * 12 + parseFloat(inchesEl.value),
       weight: weightEl.value,
-      diet: dietEl.value,
+      diet: dietEl.value.toLowerCase(),
     }
   }
 })()
@@ -163,31 +163,42 @@ const getHumanData = (() => {
 const printHeightDiff = (dinoHeight) => {
   const diff = dinoHeight - human.height
   if (diff > 0) {
-    return `${diff} inches taller than you`
+    return `${diff} inches taller`
   } else if (diff < 0) {
-    return `${-diff} inches smaller than you`
+    return `${-diff} inches smaller`
   } else {
-    return 'the same height as you'
+    return 'the same height'
   }
 }
 
 // Create Dino Compare Method 2
 // NOTE: Weight in JSON file is in lbs, height in inches.
-const calcWeightDifference = (dinoWeight) => {
-  return dinoWeight - human.weight
+const printWeightDiff = (dinoWeight) => {
+  const diff = dinoWeight - human.weight
+  if (diff > 0) {
+    return `${diff} lbs heavier`
+  } else if (diff < 0) {
+    return `${-diff} lbs lighter`
+  } else {
+    return 'the same weight'
+  }
 }
 
 // Create Dino Compare Method 3
 // NOTE: Weight in JSON file is in lbs, height in inches.
 const hasSameDiet = (dinoDiet) => {
-  return human.diet === dinoDiet
+  if (human.diet === dinoDiet) {
+    return 'had the same diet'
+  } else {
+    return `a ${dinoDiet}`
+  }
 }
 
 const buildComparison = (dino) => {
   return `
-    Comparison:
-    ${dino.species} was ${printHeightDiff(dino.height)}<br/>    
-    <br/>
+    Compared to you the ${dino.species} was<br/>
+    ${printHeightDiff(dino.height)}<br/>
+    ${printWeightDiff(dino.weight)}<br/>
     ${hasSameDiet(dino.diet)}
   `
 }
@@ -258,7 +269,10 @@ const generateHumanElement = () => {
   newChild.appendChild(img)
 
   const dataEl = document.createElement('p')
-  dataEl.innerHTML = `Diet: ${human.diet} Weight: ${human.weight} Height: ${human.height}`
+  dataEl.innerHTML = `
+    Diet: ${human.diet}<br/>
+    Height(in.): ${human.height}<br/>
+    Weight(lbs): ${human.weight}`
   newChild.appendChild(dataEl)
 
   return newChild
