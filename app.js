@@ -177,15 +177,21 @@ const hasSameDiet = (dinosaur) => {
 }
 
 const addListener = () => {
-  const gridItems = document.getElementsByClassName('fact')
+  const gridItems = document.getElementsByClassName('info-container')
 
   for (const item of gridItems) {
     item.addEventListener('mouseover', (event) => {
-      console.log('over')
+      const factEl = event.target.parentElement.firstChild
+      const compareEl = event.target.parentElement.lastChild
+      factEl.style.display = 'none'
+      compareEl.style.display = 'block'
     })
 
     item.addEventListener('mouseleave', (event) => {
-      console.log('leave')
+      const factEl = event.target.firstChild
+      const compareEl = event.target.lastChild
+      factEl.style.display = 'block'
+      compareEl.style.display = 'none'
     })
   }
 }
@@ -207,7 +213,17 @@ const generateDinoElement = (dino) => {
   const fact = document.createElement('p')
   fact.setAttribute('class', 'fact')
   fact.innerHTML = dino.facts[Math.floor(Math.random() * dino.facts.length)]
-  newChild.appendChild(fact)
+
+  const compare = document.createElement('p')
+  compare.setAttribute('class', 'compare')
+  compare.style.display = 'none'
+  compare.innerHTML = calcHeightDifference(dino)
+
+  const info = document.createElement('div')
+  info.setAttribute('class', 'info-container')
+  info.appendChild(fact)
+  info.appendChild(compare)
+  newChild.appendChild(info)
 
   return newChild
 }
