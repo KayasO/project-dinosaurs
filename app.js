@@ -160,20 +160,20 @@ const getHumanData = (() => {
 
 // Create Dino Compare Method 1
 // NOTE: Weight in JSON file is in lbs, height in inches.
-const calcHeightDifference = (dinosaur) => {
-  return dinosaur.height - human.height
+const calcHeightDifference = (dinoHeight) => {
+  return dinoHeight - human.height
 }
 
 // Create Dino Compare Method 2
 // NOTE: Weight in JSON file is in lbs, height in inches.
-const calcWeightDifference = (dinosaur) => {
-  return dinosaur.weight - human.weight
+const calcWeightDifference = (dinoWeight) => {
+  return dinoWeight - human.weight
 }
 
 // Create Dino Compare Method 3
 // NOTE: Weight in JSON file is in lbs, height in inches.
-const hasSameDiet = (dinosaur) => {
-  return human.diet === dinosaur.diet
+const hasSameDiet = (dinoDiet) => {
+  return human.diet === dinoDiet
 }
 
 const addListener = () => {
@@ -217,7 +217,7 @@ const generateDinoElement = (dino) => {
   const compare = document.createElement('p')
   compare.setAttribute('class', 'compare')
   compare.style.display = 'none'
-  compare.innerHTML = calcHeightDifference(dino)
+  compare.innerHTML = calcHeightDifference(dino.height)
 
   const info = document.createElement('div')
   info.setAttribute('class', 'info-container')
